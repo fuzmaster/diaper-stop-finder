@@ -132,7 +132,8 @@ h3 {
 
 .signup-section,
 .kit-section,
-.install-section {
+.install-section,
+.faq-section {
   border: 1px solid #e4d8c8;
   border-radius: 8px;
   background: #fff;
@@ -143,6 +144,7 @@ h3 {
 .signup-section p,
 .kit-section p,
 .install-section p,
+.faq-section p,
 .section-intro {
   color: #5f554a;
   line-height: 1.5;
@@ -313,10 +315,76 @@ select:focus {
   padding-left: 18px;
 }
 
+.faq-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+details {
+  border: 1px solid #eee5da;
+  border-radius: 8px;
+  background: #fcfaf6;
+  padding: 0 12px;
+}
+
+summary {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #2f2923;
+  font-weight: 900;
+}
+
+details p {
+  margin: 0;
+  padding: 0 0 12px;
+}
+
 .submit-form {
   margin-top: 14px;
   border-top: 1px solid #e4d8c8;
   padding-top: 16px;
+}
+
+.site-footer {
+  display: grid;
+  gap: 14px;
+  margin-top: 32px;
+  padding-top: 22px;
+  border-top: 1px solid #e4d8c8;
+  color: #5f554a;
+}
+
+.site-footer strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #211f1b;
+}
+
+.site-footer p {
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.site-footer a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d5c8b8;
+  border-radius: 8px;
+  padding: 0 14px;
+  color: #115c53;
+  background: #fff;
+  font-weight: 800;
+  text-decoration: none;
 }
 
 @media (min-width: 720px) {
@@ -374,5 +442,10 @@ select:focus {
 
   .kit-section ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr auto;
+    align-items: center;
   }
 }

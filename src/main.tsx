@@ -284,6 +284,37 @@ function App() {
         </div>
       </section>
 
+      <section className="faq-section" aria-labelledby="faq-heading">
+        <p className="eyebrow">Badge guide</p>
+        <h2 id="faq-heading">What the place tags mean</h2>
+        <div className="faq-list">
+          <details>
+            <summary>GOOD STOP</summary>
+            <p>A strong option based on current local signals. Still worth confirming because bathrooms change.</p>
+          </details>
+          <details>
+            <summary>DAD WARNING</summary>
+            <p>A changing table may only be in the women's room, or men's room access needs a parent check.</p>
+          </details>
+          <details>
+            <summary>FAMILY RESTROOM</summary>
+            <p>The best kind of stop when available: private, easier with strollers, and more useful for either parent.</p>
+          </details>
+          <details>
+            <summary>NEEDS CHECK</summary>
+            <p>We need a parent to verify whether the changing table is there, clean, accessible, and usable.</p>
+          </details>
+          <details>
+            <summary>SKIP</summary>
+            <p>Current reports say this is not a reliable diaper stop.</p>
+          </details>
+          <details>
+            <summary>OUTDATED</summary>
+            <p>The information is old enough that it should be checked again before parents rely on it.</p>
+          </details>
+        </div>
+      </section>
+
       <section className="kit-section" aria-labelledby="kit-heading">
         <p className="eyebrow">Car backup plan</p>
         <h2 id="kit-heading">Emergency Diaper Stop Kit</h2>
@@ -348,6 +379,17 @@ function App() {
           {submitMessage ? <p className="form-success" aria-live="polite">{submitMessage}</p> : null}
         </form>
       </section>
+
+      <footer className="site-footer">
+        <div>
+          <strong>Diaper Stop Finder</strong>
+          <p>Helping parents find cleaner diaper stops, one verified place at a time.</p>
+        </div>
+        <nav aria-label="Footer links">
+          <a href="https://github.com/fuzmaster/diaper-stop-finder" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.paypal.com/" target="_blank" rel="noreferrer">PayPal</a>
+        </nav>
+      </footer>
     </main>
   );
 }
