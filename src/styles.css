@@ -22,6 +22,10 @@ select {
   font: inherit;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 main {
   width: min(100%, 900px);
   margin: 0 auto;
@@ -80,6 +84,7 @@ h3 {
 
 .primary-button,
 .secondary-button,
+.text-link-button,
 .confirm-row button {
   min-height: 50px;
   border: 0;
@@ -94,6 +99,20 @@ h3 {
   color: #fff;
   background: #115c53;
   box-shadow: 0 8px 18px rgba(17, 92, 83, 0.14);
+}
+
+.hero-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.text-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cfc1b0;
+  color: #115c53;
+  background: #fff;
 }
 
 .secondary-button {
@@ -224,9 +243,28 @@ select:focus {
   white-space: nowrap;
 }
 
+.list-tools {
+  display: grid;
+  gap: 10px;
+  margin: 12px 0;
+  border: 1px solid #e5dbce;
+  border-radius: 8px;
+  background: #fff;
+  padding: 12px;
+}
+
 .place-list {
   display: grid;
   gap: 10px;
+}
+
+.empty-state {
+  border: 1px dashed #d5c8b8;
+  border-radius: 8px;
+  background: #fff;
+  padding: 16px;
+  color: #5f554a;
+  line-height: 1.5;
 }
 
 .place-card {
@@ -302,17 +340,46 @@ select:focus {
   background: #e5f1ed;
 }
 
-.kit-section p,
-.kit-section li {
+.kit-section p {
   line-height: 1.5;
 }
 
-.kit-section ul {
+.kit-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 6px;
-  margin: 12px 0 16px;
-  padding-left: 18px;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.kit-item {
+  display: grid;
+  gap: 12px;
+  border: 1px solid #eee5da;
+  border-radius: 8px;
+  background: #fcfaf6;
+  padding: 12px;
+}
+
+.kit-item h3 {
+  margin-bottom: 4px;
+  font-size: 1rem;
+}
+
+.kit-item a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #b78d69;
+  border-radius: 8px;
+  color: #704223;
+  background: #fff;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.affiliate-note {
+  margin: 12px 0 0;
+  font-size: 0.9rem;
 }
 
 .faq-list {
@@ -409,6 +476,15 @@ details p {
     width: auto;
   }
 
+  .hero-actions {
+    display: flex;
+    align-items: center;
+  }
+
+  .list-tools {
+    grid-template-columns: 1fr 220px;
+  }
+
   .stacked-form {
     margin-top: 0;
   }
@@ -440,8 +516,12 @@ details p {
     grid-column: 1 / -1;
   }
 
-  .kit-section ul {
+  .kit-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kit-item {
+    align-content: space-between;
   }
 
   .site-footer {

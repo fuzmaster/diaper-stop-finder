@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { seedPlaces } from "./data/seedData";
+import { kitItems } from "./lib/affiliateLinks";
 import { getLocalPlaces, saveLocalPlace, saveLocalReport } from "./lib/localPlaces";
 import { isValidEmail, saveEmailSignup } from "./lib/signups";
 import type { ChangingTableStatus, Place, PlaceType, RestroomLocation, SeedSignal } from "./types";
@@ -69,6 +70,8 @@ function App() {
   const [confirmMessage, setConfirmMessage] = useState("");
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [installMessage, setInstallMessage] = useState("Android users can install this as an app. iPhone users can add it from Safari.");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [placeTypeFilter, setPlaceTypeFilter] = useState<PlaceType | "all">("all");
   const [placeForm, setPlaceForm] = useState({
     name: "",
     address: "",
@@ -101,7 +104,17 @@ function App() {
   }, []);
 
   const places = useMemo<PlaceWithDistance[]>(() => {
+    const normalizedSearch = searchTerm.trim().toLowerCase();
+
     return [...localPlaces, ...seedPlaces]
+      .filter((place) => {
+        const matchesType = placeTypeFilter === "all" || place.placeType === placeTypeFilter;
+        const matchesSearch =
+          !normalizedSearch ||
+          [place.name, place.address, place.city, place.state, place.placeType].some((value) => value.toLowerCase().includes(normalizedSearch));
+
+        return matchesType && matchesSearch;
+      })
       .map((place) => ({
         ...place,
         distanceMiles: userLocation ? distanceInMiles(userLocation, place) : null,
@@ -118,7 +131,7 @@ function App() {
         }
         return a.distanceMiles - b.distanceMiles;
       });
-  }, [localPlaces, userLocation]);
+  }, [localPlaces, placeTypeFilter, searchTerm, userLocation]);
 
   function handleLocationClick() {
     if (!navigator.geolocation) {
@@ -212,9 +225,14 @@ function App() {
         <p className="eyebrow">North Shore MVP</p>
         <h1>Find a changing table before the diaper gets urgent.</h1>
         <p>Browse nearby stops, confirm what you find, and add missing places for other parents.</p>
-        <button className="primary-button" type="button" onClick={handleLocationClick}>
-          Sort by My Location
-        </button>
+        <div className="hero-actions">
+          <button className="primary-button" type="button" onClick={handleLocationClick}>
+            Sort by My Location
+          </button>
+          <a className="text-link-button" href="#submit-stop">
+            Add a stop
+          </a>
+        </div>
         <p className="helper-text">{locationMessage}</p>
       </section>
 
@@ -260,9 +278,22 @@ function App() {
           </div>
           <span>{places.length} stops</span>
         </div>
+        <div className="list-tools" aria-label="Place search and filters">
+          <label>
+            Search
+            <input value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} type="search" placeholder="Name, city, or type" />
+          </label>
+          <label>
+            Type
+            <select value={placeTypeFilter} onChange={(event) => setPlaceTypeFilter(event.target.value as PlaceType | "all")}>
+              <option value="all">all places</option>
+              {placeTypes.map((type) => <option key={type}>{type}</option>)}
+            </select>
+          </label>
+        </div>
         {confirmMessage ? <p className="form-success list-message">{confirmMessage}</p> : null}
         <div className="place-list">
-          {places.map((place) => (
+          {places.length > 0 ? places.map((place) => (
             <article className="place-card" key={place.id}>
               <div className="place-card-header">
                 <div>
@@ -280,7 +311,7 @@ function App() {
                 <button type="button" onClick={() => handleConfirm(place.id, "no")}>No table</button>
               </div>
             </article>
-          ))}
+          )) : <p className="empty-state">No stops match that search yet. Try a broader term or submit a place parents should know about.</p>}
         </div>
       </section>
 
@@ -319,21 +350,22 @@ function App() {
         <p className="eyebrow">Car backup plan</p>
         <h2 id="kit-heading">Emergency Diaper Stop Kit</h2>
         <p>Even when a place has a changing table, public bathrooms are unpredictable. Keep a small diaper stop kit in the car so you're never stuck changing your baby on a dirty surface.</p>
-        <ul>
-          <li>Foldable changing pad</li>
-          <li>Disposable changing liners</li>
-          <li>Travel wipes</li>
-          <li>Diaper trash bags</li>
-          <li>Hand sanitizer</li>
-          <li>Extra onesie</li>
-        </ul>
-        {/* TODO: Replace # with an Amazon Associates, Target, Walmart, or other affiliate link when ready. */}
-        <a className="secondary-button" href="#">
-          Build My Car Kit
-        </a>
+        <div className="kit-grid">
+          {kitItems.map((item) => (
+            <article className="kit-item" key={item.name}>
+              <div>
+                <h3>{item.name}</h3>
+                <p>{item.detail}</p>
+              </div>
+              {/* TODO: Replace placeholder href with approved Amazon Associates, Target, Walmart, or other affiliate URL. */}
+              <a href={item.href}>Shop item</a>
+            </article>
+          ))}
+        </div>
+        <p className="affiliate-note">Affiliate links can support the project later. The list should stay practical, parent-first, and easy to skip.</p>
       </section>
 
-      <section aria-labelledby="submit-heading">
+      <section id="submit-stop" aria-labelledby="submit-heading">
         <p className="eyebrow">Add a place</p>
         <h2 id="submit-heading">Submit a stop</h2>
         <p className="section-intro">Share the basics now. Coordinates can wait until the full map is ready.</p>

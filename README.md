@@ -8,12 +8,13 @@ The app is designed for quick decisions when families are away from home and nee
 
 - Finds parent-friendly public stops with baby-changing table signals
 - Sorts nearby places by distance when location access is allowed
+- Filters local stops by search term and place type
 - Shows simple verdict badges like GOOD STOP, DAD WARNING, FAMILY RESTROOM, NEEDS CHECK, SKIP, and OUTDATED
 - Explains each place tag in a simple FAQ for parents
 - Lets parents submit local stops without creating an account
 - Saves submitted places and reports locally in the browser
 - Collects email signups for future launch updates
-- Recommends a practical emergency diaper stop kit for public bathroom trips
+- Recommends a practical, affiliate-ready emergency diaper stop kit for public bathroom trips
 - Supports installable mobile app behavior through a lightweight PWA setup
 
 ## Built For
