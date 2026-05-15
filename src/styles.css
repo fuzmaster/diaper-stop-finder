@@ -131,7 +131,8 @@ h3 {
 }
 
 .signup-section,
-.kit-section {
+.kit-section,
+.install-section {
   border: 1px solid #e4d8c8;
   border-radius: 8px;
   background: #fff;
@@ -141,9 +142,20 @@ h3 {
 
 .signup-section p,
 .kit-section p,
+.install-section p,
 .section-intro {
   color: #5f554a;
   line-height: 1.5;
+}
+
+.install-section {
+  display: grid;
+  gap: 14px;
+  background: #f3fbf8;
+}
+
+.install-section h2 {
+  font-size: 1.25rem;
 }
 
 .stacked-form,
@@ -317,6 +329,16 @@ select:focus {
     grid-template-columns: 1fr 0.85fr;
     gap: 28px;
     align-items: start;
+  }
+
+  .install-section {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  .install-section .secondary-button,
+  .kit-section .secondary-button {
+    width: auto;
   }
 
   .stacked-form {

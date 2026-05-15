@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Diaper Stop Finder app icon</title>
+  <rect width="512" height="512" rx="108" fill="#115c53"/>
+  <path fill="#fff8ed" d="M128 151c0-20 16-36 36-36h184c20 0 36 16 36 36v210c0 20-16 36-36 36H164c-20 0-36-16-36-36V151Z"/>
+  <path fill="#115c53" d="M173 188c0-13 11-24 24-24h118c13 0 24 11 24 24v34H173v-34Zm0 70h166v88c0 9-7 16-16 16H189c-9 0-16-7-16-16v-88Z"/>
+  <circle cx="218" cy="301" r="17" fill="#fff8ed"/>
+  <circle cx="294" cy="301" r="17" fill="#fff8ed"/>
+  <path fill="#fff8ed" d="M230 338c16 13 36 13 52 0 6-5 15-4 20 2s4 15-2 20c-27 23-61 23-88 0-6-5-7-14-2-20s14-7 20-2Z"/>
+</svg>

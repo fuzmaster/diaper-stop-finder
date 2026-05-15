@@ -2,7 +2,7 @@
 
 Diaper Stop Finder is a mobile-first web app that helps parents find nearby gas stations, stores, restaurants, rest stops, and public places with baby-changing tables.
 
-The app is designed for quick decisions when families are away from home and need a cleaner, safer place to change a baby. Parents can browse local diaper-changing stops, confirm whether a place has a changing table, submit missing locations, and join updates for the full North Shore changing table map.
+The app is designed for quick decisions when families are away from home and need a cleaner, safer place to change a baby. Parents can browse local diaper-changing stops, confirm whether a place has a changing table, submit missing locations, install the app to their phone, and join updates for the full North Shore changing table map.
 
 ## What The App Does
 
@@ -13,6 +13,7 @@ The app is designed for quick decisions when families are away from home and nee
 - Saves submitted places and reports locally in the browser
 - Collects email signups for future launch updates
 - Recommends a practical emergency diaper stop kit for public bathroom trips
+- Supports installable mobile app behavior through a lightweight PWA setup
 
 ## Built For
 

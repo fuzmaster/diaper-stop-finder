@@ -29,6 +29,11 @@ type PlaceWithDistance = Place & {
   distanceMiles: number | null;
 };
 
+type BeforeInstallPromptEvent = Event & {
+  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
+};
+
 function distanceInMiles(from: Coordinates, place: Place) {
   if (place.lat === null || place.lng === null) {
     return null;
@@ -62,6 +67,8 @@ function App() {
   const [submitMessage, setSubmitMessage] = useState("");
   const [submitError, setSubmitError] = useState("");
   const [confirmMessage, setConfirmMessage] = useState("");
+  const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+  const [installMessage, setInstallMessage] = useState("Android users can install this as an app. iPhone users can add it from Safari.");
   const [placeForm, setPlaceForm] = useState({
     name: "",
     address: "",
@@ -74,6 +81,23 @@ function App() {
 
   useEffect(() => {
     setLocalPlaces(getLocalPlaces());
+  }, []);
+
+  useEffect(() => {
+    if ("serviceWorker" in navigator && import.meta.env.PROD) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/sw.js");
+      });
+    }
+
+    const handleBeforeInstallPrompt = (event: Event) => {
+      event.preventDefault();
+      setInstallPrompt(event as BeforeInstallPromptEvent);
+      setInstallMessage("Install Diaper Stop Finder for quicker diaper stops from your home screen.");
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    return () => window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
   }, []);
 
   const places = useMemo<PlaceWithDistance[]>(() => {
@@ -170,6 +194,18 @@ function App() {
     setConfirmMessage(status === "yes" ? "Thanks. Marked as having a changing table." : "Thanks. Marked as not having a changing table.");
   }
 
+  async function handleInstallClick() {
+    if (!installPrompt) {
+      setInstallMessage("On iPhone, open in Safari, tap Share, then Add to Home Screen.");
+      return;
+    }
+
+    await installPrompt.prompt();
+    const choice = await installPrompt.userChoice;
+    setInstallPrompt(null);
+    setInstallMessage(choice.outcome === "accepted" ? "Installed. Diaper Stop Finder is ready from your home screen." : "No problem. You can install it later from your browser menu.");
+  }
+
   return (
     <main>
       <section className="hero">
@@ -180,6 +216,17 @@ function App() {
           Sort by My Location
         </button>
         <p className="helper-text">{locationMessage}</p>
+      </section>
+
+      <section className="install-section" aria-labelledby="install-heading">
+        <div>
+          <p className="eyebrow">Phone ready</p>
+          <h2 id="install-heading">Save it for the next emergency stop.</h2>
+          <p>{installMessage}</p>
+        </div>
+        <button className="secondary-button" type="button" onClick={handleInstallClick}>
+          Add to Phone
+        </button>
       </section>
 
       <section className="signup-section" aria-labelledby="signup-heading">
@@ -251,7 +298,7 @@ function App() {
         </ul>
         {/* TODO: Replace # with an Amazon Associates, Target, Walmart, or other affiliate link when ready. */}
         <a className="secondary-button" href="#">
-          Shop the Diaper Stop Kit
+          Build My Car Kit
         </a>
       </section>
 
