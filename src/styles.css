@@ -1,0 +1,356 @@
+:root {
+  color: #211f1b;
+  background: #fbf8f2;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+main {
+  width: min(100%, 900px);
+  margin: 0 auto;
+  padding: 18px 16px 44px;
+}
+
+section {
+  margin-top: 24px;
+}
+
+.hero {
+  padding: 20px 0 4px;
+}
+
+.hero h1 {
+  max-width: 680px;
+  margin: 8px 0 12px;
+  font-size: clamp(2rem, 11vw, 4.25rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.hero p {
+  max-width: 610px;
+  margin-bottom: 16px;
+  color: #50483f;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #77614b;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h2 {
+  margin-bottom: 8px;
+  font-size: 1.45rem;
+  line-height: 1.15;
+}
+
+h3 {
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+}
+
+.primary-button,
+.secondary-button,
+.confirm-row button {
+  min-height: 50px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.primary-button {
+  padding: 0 18px;
+  color: #fff;
+  background: #115c53;
+  box-shadow: 0 8px 18px rgba(17, 92, 83, 0.14);
+}
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 50px;
+  padding: 0 18px;
+  border: 1px solid #b78d69;
+  color: #704223;
+  background: #fffaf3;
+}
+
+.helper-text,
+.form-success,
+.form-error,
+.list-message {
+  margin: 10px 0 0;
+  font-size: 0.95rem;
+}
+
+.helper-text {
+  color: #66584b;
+}
+
+.form-success {
+  color: #166342;
+  font-weight: 700;
+}
+
+.form-error {
+  color: #a12f2f;
+  font-weight: 700;
+}
+
+.signup-section,
+.kit-section {
+  border: 1px solid #e4d8c8;
+  border-radius: 8px;
+  background: #fff;
+  padding: 16px;
+  box-shadow: 0 10px 26px rgba(70, 53, 34, 0.06);
+}
+
+.signup-section p,
+.kit-section p,
+.section-intro {
+  color: #5f554a;
+  line-height: 1.5;
+}
+
+.stacked-form,
+.submit-form {
+  display: grid;
+  gap: 14px;
+}
+
+.stacked-form {
+  margin-top: 14px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  color: #3a322b;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+input,
+select {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid #d5c8b8;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  padding: 0 12px;
+}
+
+input:focus,
+select:focus {
+  border-color: #115c53;
+  box-shadow: 0 0 0 3px rgba(17, 92, 83, 0.12);
+  outline: none;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 2px 0;
+  color: #4c443b;
+  font-weight: 700;
+}
+
+.checkbox-row input {
+  width: 22px;
+  min-height: 22px;
+  margin: 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.section-heading span {
+  color: #66584b;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.place-list {
+  display: grid;
+  gap: 10px;
+}
+
+.place-card {
+  border: 1px solid #e5dbce;
+  border-radius: 8px;
+  background: #fff;
+  padding: 14px;
+}
+
+.place-card p {
+  margin-bottom: 0;
+  color: #5f5347;
+  line-height: 1.4;
+}
+
+.place-card-header {
+  display: grid;
+  gap: 12px;
+}
+
+.verdict {
+  width: fit-content;
+  border-radius: 999px;
+  padding: 6px 9px;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.verdict-good,
+.verdict-family-restroom {
+  background: #166342;
+}
+
+.verdict-dad-warning,
+.verdict-needs-check,
+.verdict-unknown {
+  background: #8d6b19;
+}
+
+.verdict-skip,
+.verdict-outdated {
+  background: #8e2f2f;
+}
+
+.place-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.place-meta span {
+  border: 1px solid #eee5da;
+  border-radius: 999px;
+  padding: 6px 9px;
+  color: #51473d;
+  background: #fcfaf6;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.confirm-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.confirm-row button {
+  color: #18423c;
+  background: #e5f1ed;
+}
+
+.kit-section p,
+.kit-section li {
+  line-height: 1.5;
+}
+
+.kit-section ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin: 12px 0 16px;
+  padding-left: 18px;
+}
+
+.submit-form {
+  margin-top: 14px;
+  border-top: 1px solid #e4d8c8;
+  padding-top: 16px;
+}
+
+@media (min-width: 720px) {
+  main {
+    padding: 32px 24px 64px;
+  }
+
+  .signup-section {
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .stacked-form {
+    margin-top: 0;
+  }
+
+  .place-card-header {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+
+  .submit-form {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .submit-form label {
+    grid-column: span 2;
+  }
+
+  .submit-form .city-field {
+    grid-column: span 3;
+  }
+
+  .submit-form .state-field {
+    grid-column: span 1;
+  }
+
+  .submit-form .primary-button,
+  .submit-form .form-error,
+  .submit-form .form-success {
+    grid-column: 1 / -1;
+  }
+
+  .kit-section ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,48 @@
+import type { Place } from "../types";
+
+export const seedPlaces: Place[] = [
+  {
+    id: "seed-beverly-cumberland-farms",
+    name: "Cumberland Farms",
+    address: "367 Cabot St",
+    city: "Beverly",
+    state: "MA",
+    lat: 42.5588,
+    lng: -70.8809,
+    placeType: "gas station",
+    seedSignal: "needs-check",
+  },
+  {
+    id: "seed-danvers-target",
+    name: "Target",
+    address: "240 Independence Way",
+    city: "Danvers",
+    state: "MA",
+    lat: 42.5509,
+    lng: -70.9437,
+    placeType: "big box",
+    seedSignal: "family-restroom",
+  },
+  {
+    id: "seed-peabody-market-basket",
+    name: "Market Basket",
+    address: "240 Newbury St",
+    city: "Peabody",
+    state: "MA",
+    lat: 42.534,
+    lng: -70.9904,
+    placeType: "grocery",
+    seedSignal: "needs-check",
+  },
+  {
+    id: "seed-salem-starbucks",
+    name: "Starbucks",
+    address: "242 Canal St",
+    city: "Salem",
+    state: "MA",
+    lat: 42.5021,
+    lng: -70.8968,
+    placeType: "coffee shop",
+    seedSignal: "dad-warning",
+  },
+];
